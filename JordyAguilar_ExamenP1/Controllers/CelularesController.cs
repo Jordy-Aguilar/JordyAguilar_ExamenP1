@@ -19,11 +19,13 @@ namespace JordyAguilar_ExamenP1.Controllers
             _context = context;
         }
 
+        // GET: Celulares
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Celular.ToListAsync());
+            return View(await _context.Celulares.ToListAsync());
         }
 
+        // GET: Celulares/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -31,32 +33,39 @@ namespace JordyAguilar_ExamenP1.Controllers
                 return NotFound();
             }
 
-            var celular = await _context.Celular
+            var celulares = await _context.Celulares
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (celular == null)
+            if (celulares == null)
             {
                 return NotFound();
             }
 
-            return View(celular);
+            return View(celulares);
         }
 
+        // GET: Celulares/Create
         public IActionResult Create()
         {
             return View();
         }
+
+        // POST: Celulares/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Modelo,Amo,Precio")] Celular celular)
+        public async Task<IActionResult> Create([Bind("Id,Modelo,Anio,Precio")] Celulares celulares)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(celular);
+                _context.Add(celulares);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(celular);
+            return View(celulares);
         }
+
+        // GET: Celulares/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -64,19 +73,22 @@ namespace JordyAguilar_ExamenP1.Controllers
                 return NotFound();
             }
 
-            var celular = await _context.Celular.FindAsync(id);
-            if (celular == null)
+            var celulares = await _context.Celulares.FindAsync(id);
+            if (celulares == null)
             {
                 return NotFound();
             }
-            return View(celular);
+            return View(celulares);
         }
 
+        // POST: Celulares/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Modelo,Amo,Precio")] Celular celular)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Modelo,Anio,Precio")] Celulares celulares)
         {
-            if (id != celular.Id)
+            if (id != celulares.Id)
             {
                 return NotFound();
             }
@@ -85,12 +97,12 @@ namespace JordyAguilar_ExamenP1.Controllers
             {
                 try
                 {
-                    _context.Update(celular);
+                    _context.Update(celulares);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CelularExists(celular.Id))
+                    if (!CelularesExists(celulares.Id))
                     {
                         return NotFound();
                     }
@@ -101,9 +113,10 @@ namespace JordyAguilar_ExamenP1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(celular);
+            return View(celulares);
         }
 
+        // GET: Celulares/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -111,33 +124,34 @@ namespace JordyAguilar_ExamenP1.Controllers
                 return NotFound();
             }
 
-            var celular = await _context.Celular
+            var celulares = await _context.Celulares
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (celular == null)
+            if (celulares == null)
             {
                 return NotFound();
             }
 
-            return View(celular);
+            return View(celulares);
         }
 
+        // POST: Celulares/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var celular = await _context.Celular.FindAsync(id);
-            if (celular != null)
+            var celulares = await _context.Celulares.FindAsync(id);
+            if (celulares != null)
             {
-                _context.Celular.Remove(celular);
+                _context.Celulares.Remove(celulares);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CelularExists(int id)
+        private bool CelularesExists(int id)
         {
-            return _context.Celular.Any(e => e.Id == id);
+            return _context.Celulares.Any(e => e.Id == id);
         }
     }
 }

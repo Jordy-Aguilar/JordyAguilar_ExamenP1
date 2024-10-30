@@ -1,0 +1,176 @@
+﻿@model IEnumerable<JordyAguilar_ExamenP1.Models.JAguilar>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <style>
+
+        body {
+            background-color: #F9E2AE;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+            padding-top: 20px;
+        }
+
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #264653;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+
+        .create-link {
+            background-color: #E76F51;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .create-link:hover {
+            background-color: #F4A261;
+        }
+
+
+        .table-container {
+            margin-top: 20px;
+            overflow-x: auto;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #264653;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .table th, .table td {
+            padding: 15px;
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        .table th {
+            background-color: #2A9D8F;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #3D5A80;
+        }
+
+        .table tr:hover {
+            background-color: #457B9D;
+        }
+
+        .actions a {
+            color: #F4A261;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 5px;
+        }
+
+        .actions a:hover {
+            color: #E76F51;
+        }
+
+
+        footer {
+            font-size: 0.9rem;
+            color: #FFFFFF;
+            padding: 10px;
+            background-color: #F4A261;
+            width: 100%;
+            text-align: center;
+        }
+
+        footer a {
+            color: #E76F51;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bienvenido a mi Examen Programación JV - Clientes</h1>
+
+
+        <a class="create-link" asp-action="Create">Crear Nuevo</a>
+
+
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sueldo</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Cliente Antiguo</th>
+                        <th>Pedido</th>
+                        <th>Celular</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Sueldo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Correo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ClienteAntiguo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Pedido)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Celular.Id)</td>
+                            <td class="actions">
+                                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <footer>
+        © 2024 - JordyAguilar_ExamenP1 - <a href="#">Privacy</a>
+    </footer>
+
+</body>
+</html>

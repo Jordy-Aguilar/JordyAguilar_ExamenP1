@@ -2,7 +2,111 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #F9E2AE;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: flex-start;
+            padding-top: 20px;
+        }
+
+        .container {
+            padding: 30px;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            margin: 0;
+        }
+
+        h1.display-4 {
+            font-size: 2.5rem;
+            color: #264653;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            margin-top: 20px;
+            object-fit: cover;
+        }
+
+        .message-button {
+            background-color: #E76F51;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+            .message-button:hover {
+                background-color: #F4A261;
+            }
+
+        footer {
+            font-size: 0.9rem;
+            color: #FFFFFF;
+            padding: 10px;
+            background-color: #E76F51;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            footer a {
+                color: #F4E1C1;
+                text-decoration: none;
+            }
+
+                footer a:hover {
+                    color: #FF8566;
+                    text-decoration: underline;
+                }
+    </style>
+    <script src="site.js"></script>
+</head>
+<body>
+
+    <div class="container text-center">
+        <h1 class="display-4">Bienvenido a mi Examen Programación JV</h1>
+        <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+        <!-- Imagen de 300x300 píxeles -->
+        <img src="Imagen/luis r.PNG" alt="Imagen de perfil" class="profile-image">
+
+        <!-- Botón que muestra el mensaje -->
+        <button class="message-button" onclick="mostrarMensaje()">Mostrar Mensaje</button>
+    </div>
+
+    <footer>
+        © 2024 - JosueValencia_EXAMPRIMERO - <a href="#">Privacy</a>
+    </footer>
+
+</body>
+</html>
