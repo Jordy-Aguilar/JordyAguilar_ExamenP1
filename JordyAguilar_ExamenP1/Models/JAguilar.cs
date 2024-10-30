@@ -1,14 +1,25 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JordyAguilar_ExamenP1.Models
 {
     public class JAguilar
     {
-        public String Nombre {  get; set; }
-        public float Salario {  get; set; }
+        [MaxLength(20)]
+        [Required]
+        public string Nombre { get; set; }
+        [Required]
+        public float Sueldo { get; set; }
+        public bool ClienteAntiguo { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime Pedido { get; set; }
+        public Celular Celular { get; set; }
+        [ForeignKey("Celular")]
+        public int IdCelular { get; set; }
+        [Key]
         public int Id { get; set; }
-        public String Descripcion { get; set; }
-        public bool TieneHijos { get; set; }
-        public DataType FechaNacimiento { get; set; }
+        [EmailAddress]
+        [Required]
+        public string Correo { get; set; }
     }
 }
