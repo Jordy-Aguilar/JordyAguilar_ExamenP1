@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<JordyAguilar_ExamenP1.Models.JAguilar>
 
 @{
-    ViewData["Title"] = "Clientes";
+    ViewData["Title"] = "Usuarios";
 }
 
 <!DOCTYPE html>
@@ -11,40 +11,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <style>
-
         body {
-            background-color: #F9E2AE;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
+            background: linear-gradient(135deg, #000000, #E91E63);
+            font-family: 'Montserrat', sans-serif;
+            color: #FFFFFF;
             margin: 0;
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             flex-direction: column;
-            padding-top: 20px;
+            min-height: 100vh;
+            padding: 20px;
         }
-
 
         .container {
             text-align: center;
             padding: 20px;
             max-width: 800px;
             width: 100%;
+            border-radius: 20px;
         }
 
         h1 {
-            font-size: 2.5rem;
-            color: #264653;
+            font-size: 2rem;
+            color: #FFFFFF;
             margin-bottom: 20px;
-            font-weight: bold;
+            font-weight: 600;
+            text-transform: uppercase;
         }
 
-
         .create-link {
-            background-color: #E76F51;
-            color: #FFFFFF;
+            background-color: #FFFFFF;
+            color: #E91E63;
             padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             margin-bottom: 20px;
@@ -52,86 +52,85 @@
             transition: background-color 0.3s;
         }
 
-        .create-link:hover {
-            background-color: #F4A261;
-        }
-
+            .create-link:hover {
+                background-color: #E91E63;
+                color: #FFFFFF;
+            }
 
         .table-container {
             margin-top: 20px;
             overflow-x: auto;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
+            border-radius: 20px;
+            width: 100%;
         }
 
         .table {
             width: 100%;
             border-collapse: collapse;
-            background-color: #264653;
-            border-radius: 5px;
+            background-color: #000000;
+            border-radius: 20px;
             overflow: hidden;
-        }
-
-        .table th, .table td {
-            padding: 15px;
             color: #FFFFFF;
-            text-align: center;
         }
 
-        .table th {
-            background-color: #2A9D8F;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
+            .table th, .table td {
+                padding: 15px;
+                text-align: center;
+            }
 
-        .table tr:nth-child(even) {
-            background-color: #3D5A80;
-        }
+            .table th {
+                background-color: #FFFFFF;
+                color: #000000;
+                text-transform: uppercase;
+                font-size: 0.9rem;
+            }
 
-        .table tr:hover {
-            background-color: #457B9D;
-        }
+            .table tr:nth-child(even) {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .table tr:hover {
+                background-color: rgba(233, 30, 99, 0.3);
+            }
 
         .actions a {
-            color: #F4A261;
+            color: #E91E63;
             text-decoration: none;
             font-weight: bold;
             margin: 0 5px;
         }
 
-        .actions a:hover {
-            color: #E76F51;
-        }
-
+            .actions a:hover {
+                color: #FFFFFF;
+            }
 
         footer {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #FFFFFF;
-            padding: 10px;
-            background-color: #F4A261;
+            padding: 20px 10px;
+            background-color: rgba(0, 0, 0, 0.8);
             width: 100%;
             text-align: center;
+            border-top: 2px solid #E91E63;
+            box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
         }
 
-        footer a {
-            color: #E76F51;
-            text-decoration: none;
-        }
+            footer a {
+                color: #FFFFFF;
+                text-decoration: none;
+            }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
+                footer a:hover {
+                    color: #FFE0B2;
+                    text-decoration: underline;
+                }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <h1>Bienvenido a mi Examen Programación JV - Clientes</h1>
-
-
-        <a class="create-link" asp-action="Create">Crear Nuevo</a>
-
-
+        <h1>En esta sección podrás visualizar nuestros clientes</h1>
+        <a class="create-link" asp-action="Create">Agregar nuevo cliente</a>
         <div class="table-container">
             <table class="table">
                 <thead>
@@ -166,11 +165,8 @@
             </table>
         </div>
     </div>
-
-
     <footer>
         © 2024 - JordyAguilar_ExamenP1 - <a href="#">Privacy</a>
     </footer>
-
 </body>
 </html>

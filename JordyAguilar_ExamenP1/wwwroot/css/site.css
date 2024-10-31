@@ -3,5 +3,5 @@
     height: 300px;
     border-radius: 10px;
     margin-top: 20px;
-    object-fit: cover; /* Ajusta la imagen para que se vea completa dentro de 300x300 */
+    object-fit: cover; 
 }
