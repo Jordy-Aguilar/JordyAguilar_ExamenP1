@@ -19,14 +19,12 @@ namespace JordyAguilar_ExamenP1.Controllers
             _context = context;
         }
 
-        // GET: JAguilars
         public async Task<IActionResult> Index()
         {
             var jordyAguilar_ExamenP1Context = _context.JAguilar.Include(j => j.Celular);
             return View(await jordyAguilar_ExamenP1Context.ToListAsync());
         }
 
-        // GET: JAguilars/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,9 +32,7 @@ namespace JordyAguilar_ExamenP1.Controllers
                 return NotFound();
             }
 
-            var jAguilar = await _context.JAguilar
-                .Include(j => j.Celular)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var jAguilar = await _context.JAguilar.Include(j => j.Celular).FirstOrDefaultAsync(m => m.Id == id);
             if (jAguilar == null)
             {
                 return NotFound();
@@ -45,16 +41,12 @@ namespace JordyAguilar_ExamenP1.Controllers
             return View(jAguilar);
         }
 
-        // GET: JAguilars/Create
         public IActionResult Create()
         {
-            ViewData["IdCelular"] = new SelectList(_context.Set<Celulares>(), "Id", "Id");
+            ViewData["IdCelular"] = new SelectList(_context.Set<Celulares>(), "Id", "Modelo");
             return View();
         }
 
-        // POST: JAguilars/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Sueldo,Nombre,Correo,ClienteAntiguo,Pedido,IdCelular")] JAguilar jAguilar)
@@ -65,11 +57,10 @@ namespace JordyAguilar_ExamenP1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCelular"] = new SelectList(_context.Set<Celulares>(), "Id", "Id", jAguilar.IdCelular);
+            ViewData["IdCelular"] = new SelectList(_context.Set<Celulares>(), "Id", "Modelo", jAguilar.IdCelular);
             return View(jAguilar);
         }
 
-        // GET: JAguilars/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,13 +73,10 @@ namespace JordyAguilar_ExamenP1.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdCelular"] = new SelectList(_context.Set<Celulares>(), "Id", "Id", jAguilar.IdCelular);
+            ViewData["IdCelular"] = new SelectList(_context.Set<Celulares>(), "Id", "Modelo", jAguilar.IdCelular);
             return View(jAguilar);
         }
 
-        // POST: JAguilars/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Sueldo,Nombre,Correo,ClienteAntiguo,Pedido,IdCelular")] JAguilar jAguilar)
@@ -118,11 +106,10 @@ namespace JordyAguilar_ExamenP1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCelular"] = new SelectList(_context.Set<Celulares>(), "Id", "Id", jAguilar.IdCelular);
+            ViewData["IdCelular"] = new SelectList(_context.Set<Celulares>(), "Id", "Modelo", jAguilar.IdCelular);
             return View(jAguilar);
         }
 
-        // GET: JAguilars/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,9 +117,7 @@ namespace JordyAguilar_ExamenP1.Controllers
                 return NotFound();
             }
 
-            var jAguilar = await _context.JAguilar
-                .Include(j => j.Celular)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var jAguilar = await _context.JAguilar.Include(j => j.Celular).FirstOrDefaultAsync(m => m.Id == id);
             if (jAguilar == null)
             {
                 return NotFound();
@@ -141,7 +126,6 @@ namespace JordyAguilar_ExamenP1.Controllers
             return View(jAguilar);
         }
 
-        // POST: JAguilars/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

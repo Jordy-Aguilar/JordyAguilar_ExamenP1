@@ -22,7 +22,8 @@ namespace JordyAguilar_ExamenP1.Controllers
         // GET: Celulares
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Celulares.ToListAsync());
+            var celulares = await _context.Celulares.ToListAsync();
+            return View(celulares);
         }
 
         // GET: Celulares/Details/5
@@ -50,17 +51,24 @@ namespace JordyAguilar_ExamenP1.Controllers
         }
 
         // POST: Celulares/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Modelo,Anio,Precio")] Celulares celulares)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(celulares);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(celulares);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateException ex)
+                {
+                    // Manejo de excepciones al guardar
+                    ModelState.AddModelError(string.Empty, "No se pudo guardar el celular. Intente de nuevo.");
+                    Console.WriteLine(ex.Message); // Log para depuración
+                }
             }
             return View(celulares);
         }
@@ -82,8 +90,6 @@ namespace JordyAguilar_ExamenP1.Controllers
         }
 
         // POST: Celulares/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Modelo,Anio,Precio")] Celulares celulares)
@@ -143,9 +149,9 @@ namespace JordyAguilar_ExamenP1.Controllers
             if (celulares != null)
             {
                 _context.Celulares.Remove(celulares);
+                await _context.SaveChangesAsync();
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

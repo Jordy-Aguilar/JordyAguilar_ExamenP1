@@ -4,12 +4,111 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #000000, #E91E63);
+            font-family: 'Montserrat', sans-serif;
+            color: #FFFFFF;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-<h4>Celulares</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+        h1 {
+            font-size: 2rem;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        h4 {
+            color: #FFFFFF;
+            margin-bottom: 15px;
+        }
+
+        .form-container {
+            background-color: #000000;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 400px;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .control-label {
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+
+        .form-control {
+            background-color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            color: #000000;
+            width: 100%;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border: 2px solid #E91E63;
+        }
+
+        .btn-primary {
+            background-color: #E91E63;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #FFFFFF;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #FF4081;
+        }
+
+        .text-danger {
+            color: #FF3D00;
+        }
+
+        .back-link {
+            margin-top: 15px;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            color: #E91E63;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Create</h1>
+
+    <h4>Celulares</h4>
+    <hr />
+
+    <div class="form-container">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -32,12 +131,15 @@
             </div>
         </form>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="Index" class="back-link">Back to List</a>
+    </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>
+</html>
